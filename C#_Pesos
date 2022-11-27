@@ -16,7 +16,7 @@ namespace Solucion01
         private static int len;
 
         List<Program> datosemp = new List<Program>(); --------------------(1)
-        static string Main(string[] args) --------------------(1)
+        static string Main(string[] args) 
         {
             string AAATTGGATCAAA; --------------------(1)
             string TAACCGGUUTACC;  --------------------(1)
