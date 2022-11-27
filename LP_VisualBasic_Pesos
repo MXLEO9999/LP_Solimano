@@ -2,7 +2,7 @@ Imports System.Xml.Serialization
 
 Module Module1
 
-    Sub Main() --------------------(1)
+    Sub Main()
 
     End Sub
     Private Function GenerarCadena(numeroCaracteres As Integer) As String 
