@@ -30,7 +30,7 @@ namespace Solucion01
             for (int i = 0; i < len; i++)
             {
                 int s = r.Next(1, 4);   --------------------(13) 
-                switch (s)  --------------------(13)
+                switch (s) 
                 {
                     case 1:
                         res[i] = Convert.ToChar(r.Next(49, 57)); 
