@@ -1,0 +1,100 @@
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Xml.Serialization;
+using System.Collections;
+
+
+namespace Solucion01
+{
+    internal class Program
+    {
+        private static int len;
+
+        List<Program> datosemp = new List<Program>(); --------------------(1)
+        static string Main(string[] args) --------------------(1)
+        {
+            string AAATTGGATCAAA; --------------------(1)
+            string TAACCGGUUTACC;  --------------------(1)
+
+            //generemos combinaciones con las bases para la mutacíon
+
+            Random r = new Random(DateTime.Now.Millisecond); --------------------(1)
+
+            sbyte[] buffer = new sbyte[len]; --------------------(1)
+            char[] res = new char[len]; --------------------(1)
+            for (int i = 0; i < len; i++)
+            {
+                int s = r.Next(1, 4);   --------------------(13) 
+                switch (s)  --------------------(13)
+                {
+                    case 1:
+                        res[i] = Convert.ToChar(r.Next(49, 57)); 
+                        break;
+                    case 2:
+                        res[i] = Convert.ToChar(r.Next(65, 90));
+                        break;
+                    default:
+                        res[i] = Convert.ToChar(r.Next(97, 122));
+                        break;
+                }
+            }
+
+            return new String(res); --------------------(1)
+             }
+        //método para generar seres alteatorios
+        public static string GenerarSeresAleatoria(int maxLenght) 
+        {
+            try --------------------(1)
+            {
+                var obj = new Random();  --------------------(1)
+                const string allowedChars = "AAATTGGATCAAA"; --------------------(1)
+                var longitud = allowedChars.Length;  --------------------(1)
+                var res = "";   --------------------(1) 
+
+                for (int i = 0; i < maxLenght; i++) 
+                {
+                    res += allowedChars[obj.Next(longitud)]; --------------------(N)
+                }
+                return res;
+
+            }
+            catch (Exception) --------------------(1) 
+            {
+                throw new Exception("No se puede generar una cadena aleatoria");
+            }
+        }
+        //generamos seres con base U
+        public static string GenerarSeresAleatoria02(int maxLenght)
+        {
+            try
+            {
+                var obj = new Random();--------------------(1) 
+                const string allowedChars = "TAACCGGUUTACC";--------------------(1) 
+                var longitud = allowedChars.Length;--------------------(1) 
+                var res = "";--------------------(1) 
+
+                for (int i = 0; i < maxLenght; i++)
+                {
+                    res += allowedChars[obj.Next(longitud)];--------------------(N) 
+                }
+                return res; --------------------(1) 
+
+            }
+            catch (Exception) --------------------(1) 
+            {
+                throw new Exception("No se puede generar una cadena aleatoria");
+            }
+        }
+        ///guardamos el resultado en un txt
+        XmlSerializer seralizar = new XmlSerializer(typeof(List<Program>)); --------------------(1) 
+        FileStream lector = File.OpenRead("SeresUnicelulares.txt"); --------------------(1) 
+
+        //Program = (List<Program>) seralizar.Deserialize(lector);
+        //dgempleado.DataSource = datosemp;
+    }
+}
