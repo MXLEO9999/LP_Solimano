@@ -1,0 +1,46 @@
+Imports System.Xml.Serialization
+
+Module Module1
+
+    Sub Main()
+
+    End Sub
+    Private Function GenerarCadena(numeroCaracteres As Integer) As String
+
+        ' Dimensionamos un array para almacenar las variables de seres unicelulares
+        ' 
+        ' 
+        Dim letras(51) As String
+        Dim AAATTGGATCAAA As String
+        Dim TAACCGGUUTACC As String
+
+        ' Rellenamos el array.
+        '
+        Dim n As Integer
+        For item As Int32 = 65 To 90
+            letras(n) = Chr(item)
+            letras(n + 1) = letras(n).ToLower
+            n += 2
+        Next
+
+        Dim cadenaAleatoria As String = String.Empty
+
+        ' Iniciamos el generador de números aleatorios
+        '
+        Dim rnd As New Random(DateTime.Now.Millisecond)
+
+        For n = 0 To numeroCaracteres
+
+            Dim numero As Integer = rnd.Next(0, 51)
+
+            cadenaAleatoria &= letras(numero)
+
+        Next
+
+        Return cadenaAleatoria
+
+    End Function
+
+
+
+End Module
